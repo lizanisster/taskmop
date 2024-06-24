@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clock</title>
+<style>
+    body {
+        font-family: 'Courier New', monospace; 
+        text-align: center; /* вирівнювання тексту по центру */
+        margin-top: 50px; /* відступ від верху */
+        background-color: #c78dc1; 
+    }
+    #clock {
+        font-size: 50px; 
+        color: #e4b3b3; 
+        background-color: #aa41aa; 
+        padding: 20px; /* відступ від вмісту рамочки */
+        border-radius: 90px; /* закруглення кутів */
+        border-style: dotted; /* стиль рамочки в крапочку */
+        display: inline-block; /* для того, щоб зробити годинник окремим блоком */
+    }
+</style>
+</head>
+<body>
+<div id="clock"></div> 
+<script>
+    //функція для оновлення годинника щосекунди
+    function updateClock()  {
+        var now = new Date(); //поточна дата і час
+        var hours = now.getHours().toString().padStart(2, '0'); // години + формат числа в рядок
+        //padStart 2 це довжина рядка, 0 доповнить рядок, щоб було дві цифри
+        var minutes = now.getMinutes().toString().padStart(2, '0'); // хвилини + формат числа в рядок
+        var seconds = now.getSeconds().toString().padStart(2, '0'); // секунди + формат числа в рядок
+        var timeString = hours + ':' + minutes + ':' + seconds; // формат строки годинника, розділ їх ":"
+        document.getElementById('clock').textContent = timeString; // беремо id і встановлюємо йому відформатований текстовий вміст часу
+    }
+    setInterval(updateClock, 1000); // виклик функції оновлення часу кожної секунди
+</script>
+</body>
+</html>
